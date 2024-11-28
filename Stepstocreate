@@ -1,0 +1,5 @@
+Create a circle to represent the clock face.
+Draw hour marks and labels around the clock face (1-12).
+Draw hands for hours, minutes, and seconds that move in real time or can be manually updated.
+Add divisions for the minute marks between the numbers.
+Update the clock hands to show the current time (optional, requires time library).
