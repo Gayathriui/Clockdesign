@@ -1,0 +1,70 @@
+import turtle
+import math
+
+# Setup screen
+screen = turtle.Screen()
+screen.bgcolor("white")
+
+# Create the clock turtle
+clock = turtle.Turtle()
+clock.speed(0)
+
+# Function to draw the clock circle
+def draw_clock_face(radius):
+    clock.penup()
+    clock.goto(0, -radius)  # Start at the bottom of the circle
+    clock.pendown()
+    clock.circle(radius)
+
+# Function to draw hour marks and numbers
+def draw_hour_marks(radius):
+    clock.penup()
+    for hour in range(12):
+        angle = (hour * 30)  # 360° / 12 hours = 30° per hour
+        clock.goto(0, 0)
+        clock.setheading(90 - angle)  # Point turtle upwards, adjust for hour
+        clock.forward(radius - 10)
+        clock.pendown()
+        clock.forward(10)
+        clock.penup()
+        # Add hour numbers
+        clock.goto(0, 0)
+        clock.setheading(90 - angle)  # Reset heading
+        clock.forward(radius - 25)
+        clock.write(str(hour + 1), align="center", font=("Arial", 12, "normal"))
+        clock.penup()
+
+# Function to draw the hands of the clock
+def draw_hand(length, width, color):
+    clock.pensize(width)
+    clock.pencolor(color)
+    clock.pendown()
+    clock.forward(length)
+    clock.penup()
+    clock.backward(length)
+
+# Function to draw minute marks
+def draw_minute_marks(radius):
+    clock.penup()
+    for minute in range(60):
+        angle = (minute * 6)  # 360° / 60 minutes = 6° per minute
+        clock.goto(0, 0)
+        clock.setheading(90 - angle)
+        clock.forward(radius - 5)
+        clock.pendown()
+        clock.forward(5)
+        clock.penup()
+
+# Main drawing function to draw the clock face and elements
+def draw_clock():
+    radius = 200
+    draw_clock_face(radius)
+    draw_hour_marks(radius)
+    draw_minute_marks(radius)
+
+# Call the function to draw the clock
+draw_clock()
+
+# Hide the turtle cursor and display the window
+clock.hideturtle()
+screen.mainloop()
